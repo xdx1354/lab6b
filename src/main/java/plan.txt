@@ -1,0 +1,42 @@
+LeavesPanel ma być sekcją krytyczną
+Tylko z niego ma być dostęp do  poszczególnych Leaf.
+
+Snail ma miec metodę run ponieważ każdy ma być osobnym wątkiem
+Move() - przemieszcza go do innego pola i zmienia w danym polu na present Snail
+        robi to porzez metodę w LeavesPanel.
+Eat() - wywołuje synchronised method z LeavesPanel, która zmniejszy ilosc jedzenia w danym liscu
+Pola:
+Positon X
+Positon Y
+
+
+
+Leaves Panel:
+Metody:
+generateSnails() - generuje losowo X siliamków
+synchronised moveSnail(int newX, int newY) - przesuwa z pola [x1][y1] na [x2][y2],
+        sprawdza najpierw czy jest ono wolne i jak nie to zwraca false? i czeka
+synchronised eat(int x, int y) - pobiera położenie i zabiera jedzonko z liscia
+|| A może nie muszą być synchronised i tylko grwoLeaves musi?||
+
+synchronised growLeaves() - jest uzywane w metodzie run LeavesPanel?? A może w MyFrame albo Main
+                            Co x sekund blokuje dostep do LeavesPanel i inkrementuje wartość każdego liscia
+
+
+Wątki
+- wątki tworzone będą w Main chyba
+
+
+TODO:
+- jak rozdzielic paintComponent, które rysuje ślimaka z tym co ma tylko zmieniać kolor?
+- moze nalezy rysowac slimaka osobno? Wtedy bedzie miał własne paint compponent
+- dodac generateSnails
+- dodac moveSnail
+- dodac eat()
+
+TODO:
+ - wątek growLeaves ma blokować inne wątki
+ - DONE: ślimak ma robić sleep gdy nie uda mu sie znaleźć ruchu.
+ - slimak ma miec dwa sleep, jeden na jedzenie jeden na ruch. Dodać ich parametry jako zmienne
+ - DONE: odświeźanie tablicy po każdym jedzeniu
+ - ruch slimaka ma byc w stronę liscia o najwiekszej wartosci, jesli rowne wartosci to losuje pomiedzy polami
